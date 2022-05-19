@@ -1,25 +1,27 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./routes/dashboard";
-import Project from "./routes/project";
 import Signup from "./routes/signup";
 import Login from "./routes/login";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import Create from "./routes/create";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="h-screen">
-        <Navbar />
+    <div className=" flex">
+      <BrowserRouter>
         <Sidebar />
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="project" element={<Project />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="login" element={<Login />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+        <div className="grow">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="create" element={<Create />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="login" element={<Login />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 
