@@ -8,8 +8,31 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [thumbnail, setThumbnail] = useState("");
+  const [thumbnail, setThumbnail] = useState(null);
+  const [thumbnailError, setThumbnailError] = useState(null);
   const { signup, isPending, error } = useSignup();
+
+  const handleFileChange = (e) => {
+    setThumbnail(null);
+    // setThumbnailError(null);
+    let selected = e.target.files[0];
+
+    if (!selected) {
+      setThumbnailError("Please select a file");
+      return;
+    }
+    if (!selected.type.includes("image")) {
+      setThumbnailError("selected file must be an image");
+      return;
+    }
+    if (selected.size > 100000) {
+      setThumbnailError("Image file must be les than 100kb");
+      return;
+    }
+
+    setThumbnailError(null);
+    setThumbnail(selected);
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -55,13 +78,15 @@ export default function Signup() {
           />
         </label>
         <label className="block my-2 mx-auto">
-          <span className="block mb-1 text-sm"> Thumbnail</span>
+          <span className="block mb-1 text-sm"> Profile thumbnail</span>
           <input
-            className=" mb-2  py-1 px-1 text-md h-9 border-gray-300  border min-w-full rounded focus:border-gray-500  outline-none"
+            className=" mb-2  py-1 px-1 text-md h-9 border-gray-300  border w-full  rounded focus:border-gray-500  outline-none"
             type="file"
-            // onChange={(e) => setThumbnail(e.target.value)}
+            onChange={handleFileChange}
             required
+            // onClick={()=>setThumbnailError(null)}
           />
+          {thumbnailError && <div className=" text-red-300 -mt-3 rounded-md">{thumbnailError}</div>}
         </label>
 
         {isPending && <Button title={"Pending..."} />}
