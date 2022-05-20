@@ -18,20 +18,16 @@ const Sidebar = () => {
         <nav className="links mt-20 ml-5 ">
           <ul>
             {navLinks.map((link) => (
-              <li className="mt-2">
+              <li key={link.title} className="mt-2">
                 <NavLink
                   className={({ isActive }) =>
                     !isActive
                       ? "flex p-2 w-full text-white items-center"
                       : " group flex p-2 w-full text-white items-center bg-gray-400 rounded-l-xl "
                   }
-                  key={link.title}
                   to={link.path}
                 >
-                  <img
-                    className="mr-2 invert w-8 h-8"
-                    src={link.img}
-                  />
+                  <img className="mr-2 invert w-8 h-8" src={link.img} />
                   <span>{link.title}</span>
                 </NavLink>
               </li>
