@@ -36,7 +36,7 @@ export default function Signup() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    signup(email, password, displayName);
+    signup(email, password, displayName,thumbnail);
   };
 
   return (
