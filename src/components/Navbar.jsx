@@ -1,8 +1,11 @@
+import { isPending } from "@reduxjs/toolkit";
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../asset/logo.png";
+import { useLogout } from "../hooks/useLogout";
 
 const Navbar = () => {
+  const { logout, error, isPending } = useLogout();
   return (
     <div className="w-full py-2 px-2 mb-2 bg-gray-100">
       <ul className="flex  mx-auto items-center justify-end ">
@@ -17,7 +20,8 @@ const Navbar = () => {
           <Link to="/signup">Signup</Link>
         </li>
         <li className="text-gray-600 mr-5">
-          <button className="btn">Logout</button>
+          {!isPending && <button onClick={logout}>Logout</button>}
+          {isPending && <button disabled>Logging out...</button>}
         </li>
         {/* <Link to='/'>hi</Link> */}
       </ul>
