@@ -17,6 +17,7 @@ const Create = () => {
   const [dueDate, setDueDate] = useState("");
   const [category, setCategory] = useState("");
   const [assignedUsers, setAssignedUsers] = useState([]);
+  const [formError, setFormError] = useState();
 
   const { documents, error } = useCollection("users");
   const [users, setUsers] = useState([]);
@@ -32,23 +33,42 @@ const Create = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setFormError(null);
+
+    if (!category) {
+      setFormError("Please assign a project category");
+      return;
+    }
+    if (assignedUsers.length < 1) {
+      setFormError("Please assign the projet to  at least one user");
+      return;
+    }
+
     console.log(name, details, dueDate, category.value);
   };
   return (
     <div className="max-w-xl  h-full pl-12 p-4">
       <h2 className="font-semibold pb-2">Create a new Project</h2>
       <form onSubmit={handleSubmit}>
-        <label className="block my-2 mr-2 w-1/2">
-          <span className="block mb-1 text-sm"> Project name:</span>
-          <input
-            className=" mb-2  py-1 px-1 text-md h-9 border-gray-300  border w-full  rounded focus:border-gray-500  outline-none"
-            type="text"
-            onChange={(e) => setName(e.target.value)}
-            required
-            value={name}
-          />
-        </label>
-
+        <div className="flex">
+          <label className="block my-2 mr-2 w-1/2">
+            <span className="block mb-1 text-sm"> Project name:</span>
+            <input
+              className=" mb-2  py-1 px-1 text-md h-9 border-gray-300  border w-full  rounded focus:border-gray-500  outline-none"
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              required
+              value={name}
+            />
+          </label>
+          <label className="block my-2 mr-2 w-1/2">
+            <span className="block mb-1 text-sm"> Project category: </span>
+            <Select
+              options={categories}
+              onChange={(option) => setCategory(option)}
+            />
+          </label>
+        </div>
         <label className="block my-2 mx-auto">
           <span className="block mb-1 text-sm"> Project details:</span>
           <textarea
@@ -60,23 +80,15 @@ const Create = () => {
           />
         </label>
 
-        
-          <label className="block my-2 mr-2">
-            <span className="block mb-1 text-sm"> Project category: </span>
-            <Select
-              options={categories}
-              onChange={(option) => setCategory(option)}
-            />
-          </label>
-          <label className="block my-2 ml-2">
-            <span className="block mb-1 text-sm"> Assign to: </span>
-            <Select
-              options={users}
-              onChange={(option) => setAssignedUsers(option)}
-              isMulti
-            />
-          </label>
-        
+        <label className="block my-2 ">
+          <span className="block mb-1 text-sm"> Assign to: </span>
+          <Select
+            options={users}
+            onChange={(option) => setAssignedUsers(option)}
+            isMulti
+          />
+        </label>
+
         <label className="block my-2  w-1/2 ">
           <span className="block mb-1 text-sm"> Set Due Date:</span>
           <input
@@ -87,8 +99,8 @@ const Create = () => {
             value={dueDate}
           />
         </label>
-
         <button className="btn"> Add Project</button>
+        {formError && <p className="error">{formError}</p>}
       </form>
     </div>
   );
