@@ -9,7 +9,7 @@ const Navbar = () => {
   const { logout, error, isPending } = useLogout();
   const { user } = useAuthContext();
   return (
-    <div className="w-full py-2 px-2 bg-gray-100">
+    <div className="w-full py-2 px-2 bg-gray-100 border-b ">
       <ul className="flex  mx-auto items-center justify-end ">
         <li className="flex font-bold tracking-wider text-emerald-600/50 items-center mr-auto text-sm">
           <img src={Logo} alt="logo" className="w-9 h-9" />

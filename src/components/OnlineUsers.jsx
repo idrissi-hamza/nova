@@ -17,6 +17,9 @@ const OnlineUsers = () => {
             className="flex justify-end items-center mx-auto my-5"
             key={user.id}
           >
+            {user.online && (
+              <div className="w-2 h-2 mr-2 mt-1 rounded-full  bg-green-400" />
+            )}
             <span className="mr-2">{user.displayName}</span>
             <Avatar cls={`w-8 h-8`} src={user.photoURL} />
           </div>
