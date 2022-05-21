@@ -6,34 +6,40 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Create from "./routes/create";
 import { useAuthContext } from "./hooks/useAuthContext";
+import OnlineUsers from "./components/OnlineUsers";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
   return (
-    <div className=" flex">
+    <div className=" flex  ">
       {authIsReady && (
         <BrowserRouter>
           {user && <Sidebar />}
-          <div className="grow">
+          <div className="grow flex flex-col">
             <Navbar />
-            <Routes>
-              <Route
-                path="/"
-                element={user ? <Dashboard /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="create"
-                element={user ? <Create /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="signup"
-                element={user ? <Navigate to="/" /> : <Signup />}
-              />
-              <Route
-                path="login"
-                element={user ? <Navigate to="/" /> : <Login />}
-              />
-            </Routes>
+            <div className="flex grow ">
+              <div className="grow">
+                <Routes>
+                  <Route
+                    path="/"
+                    element={user ? <Dashboard /> : <Navigate to="/login" />}
+                  />
+                  <Route
+                    path="create"
+                    element={user ? <Create /> : <Navigate to="/login" />}
+                  />
+                  <Route
+                    path="signup"
+                    element={user ? <Navigate to="/" /> : <Signup />}
+                  />
+                  <Route
+                    path="login"
+                    element={user ? <Navigate to="/" /> : <Login />}
+                  />
+                </Routes>
+              </div>
+              {user && <OnlineUsers />}
+            </div>
           </div>
         </BrowserRouter>
       )}
