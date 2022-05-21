@@ -2,10 +2,12 @@ import { isPending } from "@reduxjs/toolkit";
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../asset/logo.png";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
 const Navbar = () => {
   const { logout, error, isPending } = useLogout();
+  const { user } = useAuthContext();
   return (
     <div className="w-full py-2 px-2 mb-2 bg-gray-100">
       <ul className="flex  mx-auto items-center justify-end ">
@@ -13,16 +15,22 @@ const Navbar = () => {
           <img src={Logo} alt="logo" className="w-9 h-9" />
           <span>nova</span>
         </li>
-        <li className="text-gray-600 mr-5">
-          <Link to="/login">Login</Link>
-        </li>
-        <li className="text-gray-600 mr-5">
-          <Link to="/signup">Signup</Link>
-        </li>
-        <li className="text-gray-600 mr-5">
-          {!isPending && <button onClick={logout}>Logout</button>}
-          {isPending && <button disabled>Logging out...</button>}
-        </li>
+        {!user && (
+          <li className="text-gray-600 mr-5">
+            <Link to="/login">Login</Link>
+          </li>
+        )}
+        {!user && (
+          <li className="text-gray-600 mr-5">
+            <Link to="/signup">Signup</Link>
+          </li>
+        )}
+        {user && (
+          <li className="text-gray-600 mr-5">
+            {!isPending && <button onClick={logout}>Logout</button>}
+            {isPending && <button disabled>Logging out...</button>}
+          </li>
+        )}
         {/* <Link to='/'>hi</Link> */}
       </ul>
     </div>
