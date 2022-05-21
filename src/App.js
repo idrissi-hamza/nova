@@ -11,13 +11,13 @@ import OnlineUsers from "./components/OnlineUsers";
 function App() {
   const { user, authIsReady } = useAuthContext();
   return (
-    <div className=" flex  ">
+    <div className=" flex h-full ">
       {authIsReady && (
         <BrowserRouter>
           {user && <Sidebar />}
-          <div className="grow flex flex-col">
+          <div className="grow  flex flex-col ">
             <Navbar />
-            <div className="flex grow ">
+            <div className="flex grow  ">
               <div className="grow">
                 <Routes>
                   <Route
