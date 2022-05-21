@@ -5,6 +5,8 @@ import Select from "react-select";
 import { timestamp } from "../firebase/config";
 import { useCollection } from "../hooks/useCollection";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useFirestore } from "../hooks/useFirestore";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   { value: "develpment", label: "Development" },
@@ -14,6 +16,8 @@ const categories = [
 ];
 
 const Create = () => {
+  const { addDocument, response } = useFirestore("projects");
+
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
   const [dueDate, setDueDate] = useState("");
@@ -34,8 +38,9 @@ const Create = () => {
       setUsers(options);
     }
   }, [documents]);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError(null);
 
@@ -69,7 +74,10 @@ const Create = () => {
       createdBy,
       assignedUsersList,
     };
-    console.log(name, details, dueDate, category.value);
+    await addDocument(project);
+    if (!response.error) {
+      navigate("/");
+    }
   };
   return (
     <div className="max-w-xl  h-full pl-12 p-4">
