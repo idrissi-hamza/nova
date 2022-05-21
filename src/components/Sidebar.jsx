@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Dashboard from "../asset/dashboard.svg";
 import Add from "../asset/add.svg";
+import { useAuthContext } from "../hooks/useAuthContext";
+import Avatar from "./Avatar";
 
 const navLinks = [
   { title: "Dashboard", path: "/", img: Dashboard },
@@ -9,11 +11,13 @@ const navLinks = [
 ];
 
 const Sidebar = () => {
+  const { user } = useAuthContext();
   return (
-    <div className="sidebar relative w-72 min-h-screen  text-white bg-gray-500">
-      <div className="sidebare-content fixed w-72 ">
-        <div className="user font-bold text-center tracking-wider px-7 py-10  border-b border-gray-50 ">
-          <p>user name</p>
+    <div className=" relative w-72 min-h-screen  text-white bg-gray-500">
+      <div className=" fixed w-72 ">
+        <div className=" font-bold text-center tracking-wider p-7  border-b border-gray-50 ">
+          <Avatar src={user.photoURL} cls={'w-12 h-12'} />
+          <p>{user.displayName}</p>
         </div>
         <nav className="links mt-20 ml-5 ">
           <ul>
