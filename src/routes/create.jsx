@@ -1,6 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import Select from "react-select";
+import { useCollection } from "../hooks/useCollection";
 
 const categories = [
   { value: "develpment", label: "Development" },
@@ -15,6 +17,18 @@ const Create = () => {
   const [dueDate, setDueDate] = useState("");
   const [category, setCategory] = useState("");
   const [assignedUsers, setAssignedUsers] = useState([]);
+
+  const { documents, error } = useCollection("users");
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    if (documents) {
+      const options = documents.map((user) => {
+        return { value: user, label: user.displayName };
+      });
+      setUsers(options);
+    }
+  }, [documents]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,32 +60,33 @@ const Create = () => {
           />
         </label>
 
-        <div className="flex">
-          <label className="block my-2 mr-2 w-1/2">
+        
+          <label className="block my-2 mr-2">
             <span className="block mb-1 text-sm"> Project category: </span>
             <Select
               options={categories}
               onChange={(option) => setCategory(option)}
             />
           </label>
-          <label className="block my-2 ml-2 w-1/2">
+          <label className="block my-2 ml-2">
             <span className="block mb-1 text-sm"> Assign to: </span>
             <Select
-              options={categories}
-              onChange={(option) => setCategory(option)}
+              options={users}
+              onChange={(option) => setAssignedUsers(option)}
+              isMulti
             />
           </label>
-        </div>
+        
         <label className="block my-2  w-1/2 ">
-            <span className="block mb-1 text-sm"> Set Due Date:</span>
-            <input
-              className=" mb-2  py-1 px-1 text-md h-9 border-gray-300  border w-full  rounded focus:border-gray-500  outline-none"
-              type="date"
-              onChange={(e) => setDueDate(e.target.value)}
-              required
-              value={dueDate}
-            />
-          </label>
+          <span className="block mb-1 text-sm"> Set Due Date:</span>
+          <input
+            className=" mb-2  py-1 px-1 text-md h-9 border-gray-300  border w-full  rounded focus:border-gray-500  outline-none"
+            type="date"
+            onChange={(e) => setDueDate(e.target.value)}
+            required
+            value={dueDate}
+          />
+        </label>
 
         <button className="btn"> Add Project</button>
       </form>
