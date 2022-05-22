@@ -35,7 +35,7 @@ export default function ProjectComments({ project }) {
       <h4 className="text-lg font-semibold  text-slate-700">
         Project Comments
       </h4>
-      <div className=" overflow-y-scroll h-[70vh]">
+      <div className=" overflow-y-scroll h-[70vh] pr-1 scrollbar-thin">
         <ul>
           {project.comments.length > 0 &&
             project.comments.map((comment) => (
