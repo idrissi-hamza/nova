@@ -7,7 +7,7 @@ export default function ProjectSummary({ project }) {
         <h2 className="text-xl font-semibold uppercase text-slate-700">
           {project.name}
         </h2>
-        <p className="my-3 text-lg text-slate-400">
+        <p className="mb-3  text-sm text-slate-400">
           Project due by {project.dueDate.toDate().toDateString()}
         </p>
         <p className="my-4 text-slate-800 border-b pb-5">{project.details}</p>

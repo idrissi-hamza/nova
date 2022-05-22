@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument";
+import ProjectComments from "./ProjectComments";
 import ProjectSummary from "./ProjectSummary";
 
 const Project = () => {
@@ -24,7 +25,8 @@ const Project = () => {
     <div className="m-8 grid grid-cols-5 items-start gap-14">
       <ProjectSummary project={document} />
 
-      <div className="col-span-2">comments</div>
+      {/* <div className="col-span-2">comments</div> */}
+      <ProjectComments/>
     </div>
   );
 };
