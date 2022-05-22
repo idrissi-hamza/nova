@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar";
 import Create from "./routes/create";
 import { useAuthContext } from "./hooks/useAuthContext";
 import OnlineUsers from "./components/OnlineUsers";
+import Project from "./routes/project";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -27,6 +28,10 @@ function App() {
                   <Route
                     path="create"
                     element={user ? <Create /> : <Navigate to="/login" />}
+                  />
+                  <Route
+                    path="project/:id"
+                    element={user ? <Project /> : <Navigate to="/login" />}
                   />
                   <Route
                     path="signup"
