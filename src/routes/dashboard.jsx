@@ -5,10 +5,10 @@ import { useCollection } from "../hooks/useCollection";
 const Dashboard = () => {
   const { documents, error } = useCollection("projects");
   return (
-    <div>
+    <div className="p-8">
       <h2>Dashboard</h2>
       {error && <p className="error">{error}</p>}
-      {documents && documents.map((doc) => <ProjectList projects={documents} />)}
+      {documents && <ProjectList projects={documents} />}
     </div>
   );
 };
