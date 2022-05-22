@@ -26,7 +26,7 @@ const Project = () => {
       <ProjectSummary project={document} />
 
       {/* <div className="col-span-2">comments</div> */}
-      <ProjectComments/>
+      <ProjectComments project={document} />
     </div>
   );
 };
