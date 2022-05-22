@@ -24,8 +24,6 @@ const Project = () => {
     // <p>j</p>
     <div className="m-8 grid grid-cols-5 items-start gap-14">
       <ProjectSummary project={document} />
-
-      {/* <div className="col-span-2">comments</div> */}
       <ProjectComments project={document} />
     </div>
   );
