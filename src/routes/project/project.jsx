@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useDocument } from "../hooks/useDocument";
+import { useDocument } from "../../hooks/useDocument";
+import ProjectSummary from "./ProjectSummary";
 
 const Project = () => {
   const { id } = useParams();
@@ -19,8 +20,11 @@ const Project = () => {
     );
   }
   return (
-    <div className="m-8">
-      <h1 className="text-xl font-semibold uppercase text-slate-700">{document.name}</h1>
+    // <p>j</p>
+    <div className="m-8 grid grid-cols-5 items-start gap-14">
+      <ProjectSummary project={document} />
+
+      <div className="col-span-2">comments</div>
     </div>
   );
 };

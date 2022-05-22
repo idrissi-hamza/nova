@@ -13,8 +13,8 @@ const navLinks = [
 const Sidebar = () => {
   const { user } = useAuthContext();
   return (
-    <div className="  w-60 text-white bg-gray-500 min-h-screen">
-      <div className=" fixed  w-[inherit] ">
+    <div className="  w-60 text-white bg-gray-500 min-h-screen ">
+      <div className="   w-[inherit] ">
         <div className=" font-bold text-center tracking-wider p-7  border-b border-gray-50 ">
           <Avatar src={user.photoURL} cls={"w-12 h-12"} />
           <p>{user.displayName}</p>
