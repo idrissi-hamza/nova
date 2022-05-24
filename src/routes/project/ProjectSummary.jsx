@@ -1,12 +1,27 @@
+import { useNavigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useCollection } from "../../hooks/useCollection";
+import { useFirestore } from "../../hooks/useFirestore";
 
 export default function ProjectSummary({ project }) {
+  const { user } = useAuthContext();
+  const { deleteDocument, response } = useFirestore("projects");
+  const navigate = useNavigate();
+  const handleClick = () => {
+    deleteDocument(project.id);
+    // console.log(project);
+    navigate("/");
+  };
   return (
     <div className="col-span-3">
       <div className="bg-white p-7 rounded-md ">
         <h2 className="text-xl font-semibold uppercase text-slate-700">
           {project.name}
         </h2>
+        <p className="text-xs -mt-1">
+          Author : {project.createdBy.displayName}
+        </p>
         <p className="mb-3  text-sm text-slate-400">
           Project due by {project.dueDate.toDate().toDateString()}
         </p>
@@ -26,6 +41,11 @@ export default function ProjectSummary({ project }) {
           ))}
         </div>
       </div>
+      {project.createdBy.id == user.uid && (
+        <button className="btn mt-3" onClick={handleClick}>
+          mark as Completed
+        </button>
+      )}
     </div>
   );
 }
