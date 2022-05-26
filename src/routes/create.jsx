@@ -9,7 +9,7 @@ import { useFirestore } from "../hooks/useFirestore";
 import { useNavigate } from "react-router-dom";
 
 const categories = [
-  { value: "develpment", label: "Development" },
+  { value: "development", label: "Development" },
   { value: "design", label: "Design" },
   { value: "sales", label: "Sales" },
   { value: "marketing", label: "Marketing" },
