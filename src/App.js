@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./routes/dashboard";
 import Signup from "./routes/signup";
 import Login from "./routes/login";
@@ -13,7 +13,7 @@ function App() {
   const { user, authIsReady } = useAuthContext();
   return (
     <div className=" flex h-full ">
-      {authIsReady && (
+       {authIsReady && (
         <BrowserRouter>
           {user && <Sidebar />}
           <div className="grow  flex flex-col ">

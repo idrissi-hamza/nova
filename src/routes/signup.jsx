@@ -1,8 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { useSignup } from "../hooks/useSignup";
-import { Link } from "react-router-dom";
-import Logo from "../asset/logo.png";
 
 export default function Signup() {
   const [email, setEmail] = useState("");

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import  React, { useState } from "react";
 import Avatar from "../../components/Avatar";
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";

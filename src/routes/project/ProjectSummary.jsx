@@ -1,7 +1,7 @@
+import React from 'react'
 import { useNavigate } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useCollection } from "../../hooks/useCollection";
 import { useFirestore } from "../../hooks/useFirestore";
 
 export default function ProjectSummary({ project }) {
@@ -41,7 +41,7 @@ export default function ProjectSummary({ project }) {
           ))}
         </div>
       </div>
-      {project.createdBy.id == user.uid && (
+      {project.createdBy.id === user.uid && (
         <button className="btn mt-3" onClick={handleClick}>
           mark as Completed
         </button>

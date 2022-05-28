@@ -1,4 +1,3 @@
-import { isPending } from "@reduxjs/toolkit";
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../asset/logo.png";

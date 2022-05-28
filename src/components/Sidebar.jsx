@@ -1,9 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Dashboard from "../asset/dashboard.svg";
 import Add from "../asset/add.svg";
 import { useAuthContext } from "../hooks/useAuthContext";
 import Avatar from "./Avatar";
+import { NavLink } from "react-router-dom";
 
 const navLinks = [
   { title: "Dashboard", path: "/", img: Dashboard },
@@ -31,7 +31,7 @@ const Sidebar = () => {
                   }
                   to={link.path}
                 >
-                  <img className="mr-2 invert w-8 h-8" src={link.img} />
+                  <img className="mr-2 invert w-8 h-8" src={link.img} alt='link img' />
                   <span>{link.title}</span>
                 </NavLink>
               </li>
