@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
           <div className="grow  flex flex-col container ">
             <Bar />
-
+            <div className="bg-[#2f4353cc] ">{user && <OnlineUsers />}</div>
             <div className="flex grow  ">
               <div className="grow">
                 <Routes>
@@ -42,7 +42,6 @@ function App() {
                   />
                 </Routes>
               </div>
-              {/* {user && <OnlineUsers />} */}
             </div>
           </div>
         </BrowserRouter>
