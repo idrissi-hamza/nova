@@ -39,7 +39,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex items-center justify-center mt-8 ">
+    <div className="flex items-center justify-center mt-6  ">
       <form
         className=" h-[27rem] max-w-sm w-80  bg-white p-5 border shadow rounded text-slate-600"
         onSubmit={submitHandler}

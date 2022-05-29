@@ -44,7 +44,7 @@ const Login = () => {
         {!isPending && <Button title={"Login"} />}
         {error && alert(error)}
         <div className="pt-2 font-semibold text-sm hover:text-emerald-700/50 text-emerald-600/80  inline-block ">
-          <Link to="/login">Already have an account?</Link>
+          <Link to="/signup">Create a new  account?</Link>
         </div>
       </form>
     </div>
