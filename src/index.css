@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
   .btn {
     @apply border-2 border-gray-600 text-gray-700 font-semibold px-3 py-1 rounded hover:bg-gray-600 hover:text-indigo-50  transition ease-in-out delay-100;
@@ -10,10 +9,42 @@
   .error {
     @apply border-2 border-red-600/80 text-red-600 px-2 mt-1 w-fit rounded bg-red-400/30;
   }
+  .glass {
+    background: rgba(255, 255, 255, 0.2);
+    /* border-radius: 16px; */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .bg-gradient {
+    /* background-color: #ccc; */
+    /* background-image: linear-gradient(140deg, #b8c6db 0%, #f5f7fa 74%); */
+    background-color: #2f4353;
+    background-image: linear-gradient(160deg, #2f4353 0%, #d2ccc4 100%);
+  }
+  .container {
+    max-width: 1000px;
+    min-height: 95vh;
+    margin: 0.5vw auto;
+    /* background-color: #fff; */
+    /* background-color: transparent; */
+    background: rgba(255, 255, 255, 0.2);
+    /* border-radius: 16px; */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+
+    border-radius: 9px;
+    overflow: hidden;
+    box-shadow: 0 2rem 6rem 0.5rem rgba($color-grey-dark-1, 0.2);
+    /* overflow: scroll; */
+  }
 }
 
 @layer base {
   body {
-    @apply bg-gray-100;
+    @apply bg-gradient min-h-screen;
+    font-family: "Nunito", sans-serif;
   }
 }

@@ -5,11 +5,11 @@ import Avatar from "./Avatar";
 const ProjectList = ({ projects }) => {
   return (
     <div className="mt-10 grid grid-cols-fit-60 gap-5   ">
-      {projects.length === 0 && <p>no project found!</p>}
+      {projects.length === 0 && <p className="glass">no project found!</p>}
       {projects.map((project) => (
         <Link
-          className="bg-white p-4 shadow-md text-inherit hover:shadow-lg hover:-translate-y-1 transition ease-in-out delay-100 rounded-md"
-          to={`/project/${project.id}`}
+        className=" max-w-sm p-4 shadow-md text-inherit hover:shadow-lg hover:-translate-y-1 transition ease-in-out delay-100 rounded-md bg-white"
+        to={`/project/${project.id}`}
           key={project.id}
         >
           <h4 className="text-lg font-semibold"> {project.name}</h4>

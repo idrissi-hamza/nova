@@ -31,7 +31,7 @@ export default function ProjectComments({ project }) {
   };
 
   return (
-    <div className="col-span-2">
+    <div className="col-span-2 glass p-2" >
       <h4 className="text-lg font-semibold  text-slate-700">
         Project Comments
       </h4>

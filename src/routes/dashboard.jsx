@@ -42,7 +42,7 @@ const Dashboard = () => {
     : null;
 
   return (
-    <div className="p-8">
+    <div className="sm:p-8 p-2 my-auto">
       <h2>Dashboard</h2>
       <div className=" mb-2 flex gap-2 bg-white w-max py-2 px-3 rounded-md text-slate-700 cursor-pointer">
         {filterList.map((f) => (

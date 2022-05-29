@@ -8,16 +8,18 @@ import Create from "./routes/create";
 import { useAuthContext } from "./hooks/useAuthContext";
 import OnlineUsers from "./components/OnlineUsers";
 import Project from "./routes/project/project";
+import Bar from "./components/Bar";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
   return (
-    <div className=" flex h-full ">
-       {authIsReady && (
+    <div className=" flex h-full">
+      {authIsReady && (
         <BrowserRouter>
-          {user && <Sidebar />}
-          <div className="grow  flex flex-col ">
-            <Navbar />
+          {/* {user && <Sidebar />} */}
+          <div className="grow  flex flex-col container ">
+            <Bar />
+
             <div className="flex grow  ">
               <div className="grow">
                 <Routes>
@@ -43,7 +45,7 @@ function App() {
                   />
                 </Routes>
               </div>
-              {user && <OnlineUsers />}
+              {/* {user && <OnlineUsers />} */}
             </div>
           </div>
         </BrowserRouter>
