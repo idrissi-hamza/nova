@@ -92,7 +92,7 @@ export default function OnlineUsers() {
           left: -20,
         }}
         icon={<SpeedDialIcon openIcon={<SupervisedUserCircleIcon />} />}
-        direction="Left"
+        direction=""
         FabProps={{
           sx: {
             bgcolor: "transparent",

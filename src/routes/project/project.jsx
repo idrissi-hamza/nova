@@ -22,7 +22,7 @@ const Project = () => {
   }
   return (
     // <p>j</p>
-    <div className="m-8 grid grid-cols-5 items-start gap-10 ">
+    <div className="sm:m-8   flex flex-col sm:grid sm:grid-cols-5 sm:items-start gap-1 sm:gap-10 ">
       <ProjectSummary project={document} />
       <ProjectComments project={document} />
     </div>

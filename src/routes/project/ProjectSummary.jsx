@@ -14,7 +14,7 @@ export default function ProjectSummary({ project }) {
     navigate("/");
   };
   return (
-    <div className="col-span-3">
+    <div className="sm:col-span-3 ">
       <div className="bg-white p-7 rounded-md ">
         <h2 className="text-xl font-semibold uppercase text-slate-700">
           {project.name}
