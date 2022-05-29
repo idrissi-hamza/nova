@@ -42,9 +42,8 @@ const Dashboard = () => {
     : null;
 
   return (
-    <div className="sm:p-8 p-2 my-auto">
-      <h2>Dashboard</h2>
-      <div className=" mb-2 flex gap-2 bg-white w-max py-2 px-3 rounded-md text-slate-700 cursor-pointer">
+    <div className="sm:p-6 sm:pt-4 p-2 my-auto overflow-y-scroll max-h-[80vh] scrollbar-thin">
+      <div className=" mb-2 flex gap-2 bg-white w-max py-2 px-3 rounded-md text-slate-700 cursor-pointer fix">
         {filterList.map((f) => (
           <div key={f} className="group">
             <span onClick={() => clickHandler(f)}>{f} </span>
